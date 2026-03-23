@@ -80,6 +80,9 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Smoke test (syntax)
+        run: python -m py_compile receiver.py
+
       - name: Install dependencies
         run: |
           pip install pylint bandit
