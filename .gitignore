@@ -1,5 +1,6 @@
 # Repo
 certs
+/include/secrets.h
 
 # IDE
 .vscode/

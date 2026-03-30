@@ -8,20 +8,17 @@
 #include <PubSubClient.h>
 // CAMERA_MODEL is defined in platformio.ini
 #include "camera_pins.hpp"
+#include "secrets.h"
 
 // ===========================
 // Configuration
 // ===========================
-const char* ssid     = "";       // TODO: Modificați cu SSID-ul rețelei voastre
-const char* password = "";     // TODO: Modificați cu parola rețelei voastre
-const char* mqtt_server = "10.10.10.10"; // TODO: Modificați cu IP-ul calculatorului (ip addr / ipconfig)
-const int mqtt_port = 8883;
+const char* ssid        = SECRET_WIFI_SSID;
+const char* password    = SECRET_WIFI_PASSWORD;
+const char* mqtt_server = SECRET_MQTT_SERVER;
+const int mqtt_port     = SECRET_MQTT_PORT;
 
-
-const char* ca_cert = /* TODO: Modificați cu certificatul vostru */ \
-"-----BEGIN CERTIFICATE-----\n" \
-"TODO_your_certificate_here" \
-"-----END CERTIFICATE-----\n";
+const char* ca_cert = SECRET_CA_CERT;
 
 // Topics
 const char* TOPIC_COMMAND = "ssproject/commands";

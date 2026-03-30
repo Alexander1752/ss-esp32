@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """placeholder"""
 import threading
+import os
 
 import paho.mqtt.client as mqtt
 import cv2
 import numpy as np
 
 # Configuration
-BROKER = ""  # TODO: Modificați cu IP-ul brokerului vostru
+BROKER = os.getenv("MQTT_BROKER")
 PORT = 8883
 TOPIC_IMAGE = "ssproject/images"
 TOPIC_COMMAND = "ssproject/commands"
@@ -46,6 +47,10 @@ def main():
     client = mqtt.Client()
     client.on_connect = on_connect
     client.on_message = on_message
+
+    if not BROKER:
+        print(f"\nInvalid value for env var MQTT_BROKER '{BROKER}'! Make sure it is setup correctly.\nExiting...")
+        exit(1)
 
     try:
         client.tls_set(ca_certs="certs/ca.crt")
