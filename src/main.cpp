@@ -8,7 +8,17 @@
 #include <PubSubClient.h>
 // CAMERA_MODEL is defined in platformio.ini
 #include "camera_pins.hpp"
-#include "secrets.h"
+
+#if __has_include("secrets.h")
+  #include "secrets.h"
+#else
+  #define SECRET_WIFI_SSID     ""
+  #define SECRET_WIFI_PASSWORD ""
+  #define SECRET_MQTT_SERVER   ""
+  #define SECRET_MQTT_PORT     8883
+
+  #define SECRET_CA_CERT ""
+#endif
 
 // ===========================
 // Configuration
