@@ -8,7 +8,7 @@ import numpy as np
 
 # Configuration
 BROKER = ""  # TODO: Modificați cu IP-ul brokerului vostru
-PORT = 1883
+PORT = 8883
 TOPIC_IMAGE = "ssproject/images"
 TOPIC_COMMAND = "ssproject/commands"
 
@@ -48,6 +48,7 @@ def main():
     client.on_message = on_message
 
     try:
+        client.tls_set(ca_certs="certs/ca.crt")
         client.connect(BROKER, PORT, 60)
         client.loop_start()
 
